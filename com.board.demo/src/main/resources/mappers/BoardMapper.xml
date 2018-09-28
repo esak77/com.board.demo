@@ -10,7 +10,12 @@
 	
 	<select id="listall" resultType="BoardVO">
 		<![CDATA[
-			select * from t_board where idx > 0 order by idx desc, regdate desc 
+			select idx, tit, content, writer, regdate, cnt from t_board where idx > 0 order by idx desc, regdate desc 
 		]]>
 	</select>
+	
+	<select id="detail" resultType="BoardVO">
+			select idx, tit, content, writer from t_board where idx = #{idx}
+	</select>
+	
 </mapper>

@@ -4,7 +4,11 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <jsp:include page="include/config.jsp" flush="false"/>
-
+<style>
+	td{
+		text-align: center;
+	}
+</style>
 <div id="wrap">
 	<div id="container">
 		<header>
@@ -15,6 +19,13 @@
 		<section>
 			<article>
 				<table>
+					<colgroup>
+						<col width="100">
+						<col width="200">
+						<col width="200">
+						<col width="200">
+						<col width="200">
+					</colgroup>
 					<thead>
 						<th>글번호</th>
 						<th>글제목</th>
@@ -26,9 +37,9 @@
 						<c:forEach var="tbl" items="${listall}"  varStatus="index">
 						<tr>
 							<td>${tbl.idx}</td>
-							<td>${tbl.tit}</td>
+							<td><a href="/detail?idx=${tbl.idx}">${tbl.tit}</a></td>
 							<td>${tbl.writer}</td>
-							<td>${tbl.regdate}</td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${tbl.regdate }"/></td>
 							<td>${tbl.cnt}</td>
 						</tr>
 						</c:forEach>

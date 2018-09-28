@@ -1,13 +1,13 @@
 package com.board.domain;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class BoardVO {
 	private int idx;
 	private String tit;
 	private String content;
 	private String writer;
-	private Date regdate;
+	private Timestamp regdate;
 	private int cnt;
 	
 	
@@ -15,7 +15,7 @@ public class BoardVO {
 		super();
 	}
 
-	public BoardVO(int idx, String tit, String content, String writer, Date regdate, int cnt) {
+	public BoardVO(int idx, String tit, String content, String writer, Timestamp regdate, int cnt) {
 		this.idx = idx;
 		this.tit = tit;
 		this.content = content;
@@ -56,11 +56,11 @@ public class BoardVO {
 		this.writer = writer;
 	}
 
-	public Date getRegdate() {
+	public Timestamp getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
 
