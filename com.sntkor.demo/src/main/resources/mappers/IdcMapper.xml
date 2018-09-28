@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sntkor.mappers.IdcMapper">
+
+	<insert id="insert" parameterType="IdcVO">
+		insert into idc (company,vender) 
+		values (
+		#{company},#{vender}
+		) 
+	</insert>
+	
+	<select id="list" resultType="IdcVO">
+		select * from idc
+	</select>
+	
+	<select id="detail" resultType="IdcVO" parameterType="int">
+		select * from idc where idx = #{idx}
+	</select>
+</mapper>

@@ -1,0 +1,94 @@
+@charset "UTF-8";
+html,body{margin: 0;height: 100%;font-family: "맑은 고딕", "Malgun Gothic","Nanum Gothic";}
+ul{padding: 0;margin: 0;list-style: none;}
+.row{width: 1200px; margin: 0 auto; position: relative;}
+.wrap{
+	max-width: 100%;
+	height : 100%;
+}
+.section{
+	width: 100%;
+	height : 100%;
+	position: relative;
+}
+#section01{
+	height : 100%;
+	background-color: #ebebeb;
+}
+.header{
+	border: 1px solid red;
+	max-width: 100%;
+	height: 100px;
+}
+.logo{
+	width: 250px;
+	height: 80px;
+	line-height : 80px;
+	border: 1px solid red;
+	float: left;
+}
+.logo img{
+	width: 100%;
+	height: 100%;
+	border: 1px solid blue;
+}
+.nav{
+	
+}
+.container{
+	width: 1200px;
+	padding: 0;
+	margin: 0 auto;
+}
+
+.test_area{
+	width: 100%;
+	height: 500px;
+	margin : 0 auto;
+	border: 1px solid red;
+	position: relative;
+}
+.t_content_add{
+	width: 200px;
+	height: 300px;
+	border: 1px solid blue;
+	position: absolute;
+	top: 50%;
+	transform : translate(0,-50%);
+}
+.rack_1{
+	width: 150px;
+	height: 100%;
+	border: 1px solid green;
+}
+.t_content_wrap{
+	width: 80%;
+	height: 100%;
+	border: 1px solid blue;
+	float: right;
+}
+.test{
+	width: 150px;
+	height: 15px;
+	background-color: #000;
+	display: block;
+	margin-bottom: 15px;
+	cursor: pointer;
+	font-size: 10px;
+	color: #fff;
+}
+
+#section02{
+	background-color: orange;
+}
+#section03{
+	background-color: yellow;
+}
+#section04{
+	background-color: green;
+}
+	
+
+
+
+
