@@ -10,7 +10,7 @@
 	
 	<select id="listall" resultType="BoardVO">
 		<![CDATA[
-			select idx, tit, content, writer, regdate, cnt from t_board where idx > 0 order by idx desc, regdate desc 
+			select idx, tit, content, writer, regdate, cnt from t_board where idx > 0 order by idx desc, regdate desc limit #{pageStart}, #{perPageNum}
 		]]>
 	</select>
 	
@@ -32,4 +32,11 @@
 	<update id="hit_count" parameterType="int">
 		update t_board set cnt = cnt + 1 where idx = #{idx}
 	</update>
+	
+	<!-- 총 게시글 파악 -->
+	<select id="countingPage" resultType="int">
+	<![CDATA[
+		select count(idx) from t_board where idx > 0
+	]]>
+	</select>
 </mapper>

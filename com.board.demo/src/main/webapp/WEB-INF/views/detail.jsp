@@ -22,19 +22,26 @@ function update(){
 function delete_content(idx){
 	location.href="/delete?idx="+idx
 }
+
+function history_back(){
+	history.go(-1);
+}
 </script>
 
 <div id="wrap">
 	<div id="container">
 		<header>
 			<nav>
-				<a href="/">리스트가기</a>
+				<a onclick="history_back();">리스트가기</a>
 			</nav>
 		</header>
 		<section>
 			<article>
-				<form id="b_frm" action="/update_db" method="post">
+				<form id="b_frm" action="/update_db" method="post" >
 					<input type="hidden" name="idx" value="${detail.idx }">
+					<input type="hidden" name="page" value="${cri.page }">
+					<input type="hidden" name="perPageNum" value="${cri.perPageNum }">
+					
 					<p><lable>제목</lable><input type="text" name="tit" value="${detail.tit }" readonly="readonly"></p>
 					<p><lable>작성자</lable><input type="text" name="writer" value="${detail.writer }" disabled="disabled"></p>
 					<lable>내용</lable><textarea rows="10" cols="50" style="resize: none;" name="content"  readonly="readonly">${detail.content }</textarea>

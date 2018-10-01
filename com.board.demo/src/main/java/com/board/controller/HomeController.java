@@ -1,16 +1,17 @@
 package com.board.controller;
 
-import java.util.Locale;
-
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.board.domain.BoardVO;
+import com.board.domain.Criteria;
+import com.board.domain.PageMaker;
 import com.board.service.BoardService;
 
 @Controller
@@ -20,8 +21,15 @@ public class HomeController {
 	private BoardService service;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) throws Exception{
-		model.addAttribute("listall",service.listall());
+	public String home(Criteria cri, Model model) throws Exception{
+		model.addAttribute("listall",service.listall(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.countingPage(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
 		return "index";
 	}
 	
@@ -36,7 +44,9 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/detail", method=RequestMethod.GET)
-	public void detail(@RequestParam("idx") int idx, Model model) throws Exception{
+	public void detail(@RequestParam("idx") int idx,
+			@ModelAttribute("cri") Criteria cri,
+			Model model) throws Exception{
 		service.hit_count(idx);
 		model.addAttribute("detail", service.detail(idx));
 	}
