@@ -29,6 +29,22 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVO detail(int idx) throws Exception {
 		return dao.detail(idx);
 	}
+
+	@Override
+	public void update(BoardVO vo) throws Exception {
+		dao.update(vo);
+	}
+
+	@Override
+	public void delete(int idx) throws Exception {
+		dao.delete(idx);
+	}
+
+	@Override
+	public void hit_count(int idx) throws Exception {
+		dao.hit_count(idx);
+	}
+	
 	
 	
 	

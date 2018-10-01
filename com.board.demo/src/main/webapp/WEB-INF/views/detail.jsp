@@ -5,6 +5,25 @@
 
 <jsp:include page="include/config.jsp" flush="false"/>
 
+
+<script>
+$(function(){
+	$("input[type='submit']").hide();
+	
+})
+
+
+function update(){
+	$("input[type='submit']").show();
+	$("input[name='tit']").attr("readonly",false);
+	$("textarea[name='content']").attr("readonly",false);
+}
+
+function delete_content(idx){
+	location.href="/delete?idx="+idx
+}
+</script>
+
 <div id="wrap">
 	<div id="container">
 		<header>
@@ -14,11 +33,14 @@
 		</header>
 		<section>
 			<article>
-				<form id="b_frm" action="/insert_db" method="post">
-					<p><lable>제목</lable><input type="text" name="tit" value="${detail.tit }"></p>
-					<p><lable>작성자</lable><input type="text" name="writer" value="${detail.writer }"></p>
-					<lable>내용</lable><textarea rows="10" cols="50" style="resize: none;" name="content" >${detail.content }</textarea>
-					<input type="submit" value="작성하기">
+				<form id="b_frm" action="/update_db" method="post">
+					<input type="hidden" name="idx" value="${detail.idx }">
+					<p><lable>제목</lable><input type="text" name="tit" value="${detail.tit }" readonly="readonly"></p>
+					<p><lable>작성자</lable><input type="text" name="writer" value="${detail.writer }" disabled="disabled"></p>
+					<lable>내용</lable><textarea rows="10" cols="50" style="resize: none;" name="content"  readonly="readonly">${detail.content }</textarea>
+					<input type="button" value="수정하기" onclick="update();">
+					<input type="button" value="삭제하기" onclick="delete_content(${detail.idx});">
+					<input type="submit" value="전송하기">
 				</form>
 			</article>
 		</section>

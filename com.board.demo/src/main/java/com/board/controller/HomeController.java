@@ -32,14 +32,26 @@ public class HomeController {
 	public String insert_db(BoardVO vo) throws Exception {
 		System.out.println(vo.toString());
 		service.insert(vo);
-		
 		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/detail", method=RequestMethod.GET)
 	public void detail(@RequestParam("idx") int idx, Model model) throws Exception{
+		service.hit_count(idx);
 		model.addAttribute("detail", service.detail(idx));
 	}
 	
+	
+	@RequestMapping(value="/update_db", method=RequestMethod.POST)
+	public String update_db(BoardVO vo) throws Exception{
+		service.update(vo);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="/delete", method= RequestMethod.POST)
+	public String delete_db(@RequestParam("idx") int idx) throws Exception{
+		service.delete(idx);
+		return "redirect:/";
+	}
 	
 }

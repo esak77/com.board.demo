@@ -31,7 +31,21 @@ public class BoardDAOImpl implements BoardDAO{
 	public BoardVO detail(int idx) throws Exception {
 		return session.selectOne(namespace+".detail", idx);
 	}
-	
+
+	@Override
+	public void update(BoardVO vo) throws Exception {
+		session.update(namespace+".update", vo);
+	}
+
+	@Override
+	public void delete(int idx) throws Exception {
+		session.delete(namespace+".delete", idx);
+	}
+
+	@Override
+	public void hit_count(int idx) throws Exception {
+		session.update(namespace+".hit_count", idx);
+	}
 	
 	
 	
